@@ -1,0 +1,23 @@
+<% layout('layouts/reservation-show-layout') -%>
+</br>
+<h4>New Reservation!</h4>
+</br>
+<form action="/reservations" method="POST">
+  <div><input type="text" name="reservation[name]" placeholder="name" required/></div>
+  <div><input type="text" name="reservation[time]" placeholder="time" required/></div>
+  <div><input type="text" name="reservation[date]" placeholder="date"required /></div>
+  <div>
+    <textarea
+      name="reservation[description]"
+      placeholder="Description"
+    required></textarea>
+  </div>
+  <div>
+    <input type="text" name="reservation[doctor]" placeholder="doctor" required/>
+  </div>
+  <div>
+    <input type="text" name="reservation[location]" placeholder="Location"required />
+  </div>
+</br>
+  <input id="sta" type="submit" />
+</form>

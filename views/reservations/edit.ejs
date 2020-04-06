@@ -1,0 +1,53 @@
+<% layout('layouts/reservation-show-layout') -%>
+
+<h4>Edit Reservation!</h4>
+
+<form action="/reservations/<%= reservation.id %>?_method=PUT" method="POST">
+  <div>
+    <input
+      type="text"
+      name="reservation[name]"
+      placeholder="name"
+      value="<%= reservation.name  %>"
+    />
+  </div>
+  <div>
+    <input
+      type="text"
+      name="reservation[time]"
+      placeholder="time"
+      value="<%= reservation.time  %>"
+    />
+  </div>
+  <div>
+    <input
+      type="text"
+      name="reservation[date]"
+      placeholder="date"
+      value="<%= reservation.date  %>"
+    />
+  </div>
+  <div>
+    <textarea name="reservation[description]" placeholder="Description">
+<%= reservation.description %></textarea
+    >
+  </div>
+  <div>
+    <input
+      type="text"
+      name="reservation[doctor]"
+      placeholder="doctor"
+      value="<%= reservation.doctor  %>"
+    />
+  </div>
+  <div>
+    <input
+      type="text"
+      name="reservation[location]"
+      placeholder="Location"
+      value="<%= reservation.location  %>"
+    />
+  </div>
+</br>
+  <input id="sta" type="submit" />
+</form>

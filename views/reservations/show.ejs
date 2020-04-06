@@ -1,0 +1,27 @@
+<% layout('layouts/reservation-show-layout') -%>
+</br>
+</br>
+<div>
+  <a href="/reservations">Back</a>
+</div>
+</br>
+<div>Name : <%= reservation.name %></div>
+<h1>Time : <%= reservation.time %></h1>
+<div>Date : <%= reservation.date %></div>
+<div>Description : <%= reservation.description %></div>
+<div>Doctor : <%= reservation.doctor %></div>
+<div>Location : <%= reservation.location %></div>
+</br>
+<div>
+  <a href="/reservations/<%= reservation.id %>/edit">
+    Edit
+  </a>
+</div>
+<div>
+  <form
+    action="/reservations/<%= reservation.id %>?_method=DELETE"
+    method="POST"
+  >
+    <button id="sta" type="submit" value="Delete" />Delete</button>
+  </form>
+</div>

@@ -1,0 +1,31 @@
+<% layout('layouts/reservation-show-layout') -%>
+</br>
+<h4>Reservation Index!</h4>
+<div>
+<p>
+  <form action="/reservations" method="GET" class="form-inline">
+    <div class="form-group">
+      <input type="text" name="search" placeholder="Patient Name ..." class="form-control">
+      <input type="submit" value="Search" class="btn btn-default">
+    </div>
+  </form>
+</p>
+</div>
+
+<div class="bordo" style="display: flex; flex-wrap: wrap;">
+<% reservations.forEach(function(reservation) { %>
+
+<div class="form-group col-md-3 col-sm-6 border border-primary rounded  ">
+  <ul>
+  <li><h4><%= reservation.name %></h4></li>
+  <li><h5><%= reservation.time %></h5></li>
+  <li><div><%= reservation.date %></div></li>
+  <li><div><%= reservation.description %></div></li>
+  <li><div><%= reservation.doctor %></div></li>
+  <li><div><%= reservation.location %></div></li>
+</ul>
+</br>
+  <div><a href="/reservations/<%= reservation.id %>">View more</a></div>
+</div>
+<% }); %>
+</div>
