@@ -21,15 +21,12 @@ const app = express();
 
 // connect to the database
 mongoose
-  .connect(
-    "mongodb+srv://bassam:badboy613@phonebook-konjk.mongodb.net/reservations?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(config.MONGODB_URI, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     logge.info("connected to MongoDB");
   })
