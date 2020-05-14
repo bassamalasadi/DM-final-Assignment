@@ -1,6 +1,9 @@
 <% layout('layouts/reservation-show-layout') -%>
 
 <h4>Edit Reservation!</h4>
+<div>
+  <a href="/reservations/<%= reservation.id %>">Back</a>
+</div>
 
 <form action="/reservations/<%= reservation.id %>?_method=PUT" method="POST">
   <div>
@@ -9,6 +12,7 @@
       name="reservation[name]"
       placeholder="name"
       value="<%= reservation.name  %>"
+      required
     />
   </div>
   <div>
@@ -17,6 +21,7 @@
       name="reservation[time]"
       placeholder="time"
       value="<%= reservation.time  %>"
+      required
     />
   </div>
   <div>
@@ -25,10 +30,11 @@
       name="reservation[date]"
       placeholder="date"
       value="<%= reservation.date  %>"
+      required
     />
   </div>
   <div>
-    <textarea name="reservation[description]" placeholder="Description">
+    <textarea name="reservation[description]" placeholder="Description" required>
 <%= reservation.description %></textarea
     >
   </div>
@@ -38,6 +44,7 @@
       name="reservation[doctor]"
       placeholder="doctor"
       value="<%= reservation.doctor  %>"
+      required
     />
   </div>
   <div>
@@ -46,10 +53,11 @@
       name="reservation[location]"
       placeholder="Location"
       value="<%= reservation.location  %>"
+      required
     />
   </div>
 </br>
-  <input id="sta" type="submit" />
+  <input id="sta" type="submit" value="update" />
 </form>
 
 

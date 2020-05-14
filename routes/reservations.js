@@ -9,26 +9,26 @@ const {
   reservationUpdate,
   reservationDestroy,
 } = require("../controllers/reservations");
-const { asyncErrorHandler } = require("../middleware");
+const { asyncErrorHandler, isLoggedIn } = require("../middleware");
 
 /* GET reservations index /reservations. */
-router.get("/", asyncErrorHandler(reservationIndex));
+router.get("/", isLoggedIn, asyncErrorHandler(reservationIndex));
 
 /* GET reservations new /reservations/new. */
-router.get("/new", reservationNew);
+router.get("/new", isLoggedIn, reservationNew);
 
 /* POST reservations create /reservations. */
-router.post("/", asyncErrorHandler(reservationCreate));
+router.post("/", isLoggedIn, asyncErrorHandler(reservationCreate));
 
 /* GET reservations show /reservations/:id. */
 router.get("/:id", asyncErrorHandler(reservationShow));
 
 /* GET reservations edit /reservations/:id/edit. */
-router.get("/:id/edit", asyncErrorHandler(reservationEdit));
+router.get("/:id/edit", isLoggedIn, asyncErrorHandler(reservationEdit));
 
 /* PUT reservations update /reservations/:id. */
-router.put("/:id", asyncErrorHandler(reservationUpdate));
+router.put("/:id", isLoggedIn, asyncErrorHandler(reservationUpdate));
 
 /* DELETE reservations destroy /reservations/:id. */
-router.delete("/:id", asyncErrorHandler(reservationDestroy));
+router.delete("/:id", isLoggedIn, asyncErrorHandler(reservationDestroy));
 module.exports = router;
