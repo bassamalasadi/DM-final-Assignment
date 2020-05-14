@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const Reservation = require("../models/Reservation");
-const passport = require("passport");
+
 module.exports = {
   //GET
   async landingPage(req, res, next) {
@@ -32,22 +32,29 @@ module.exports = {
       res.render("register", { title: "Register", username, email, error });
     }
   },
+
   //get login
   getLogin(req, res, next) {
     res.render("login", { title: "login" });
   },
-  // user login
+
   async login(req, res, next) {
-    const { username, password } = req.body;
-    const { user, error } = await User.authenticate()(username, password);
-    if (!user && error) return next(error);
-    req.login(user, function (err) {
-      if (err) return next(err);
-      req.session.success = `Welcome back, ${username}!`;
-      const redirectUrl = req.session.redirectTo || "/";
-      delete req.session.redirectTo;
-      res.redirect(redirectUrl);
-    });
+    try {
+      const { username, password } = req.body;
+      const { user, error } = await User.authenticate()(username, password);
+      if (!user && error) return next(err);
+      req.login(user, function (err) {
+        if (err) return next(err);
+        req.session.success = `Welcome back, ${username}!`;
+        const redirectUrl = req.session.redirectTo || "/";
+        delete req.session.redirectTo;
+        res.redirect(redirectUrl);
+      });
+    } catch (err) {
+      const { username, password } = req.body;
+      let error = "Password or username is incorrect";
+      res.render("login", { title: "Login", username, password, error });
+    }
   },
 
   // user logout

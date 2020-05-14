@@ -27,7 +27,7 @@ router.post(
 router.get("/login", getLogin);
 
 /* POST /login. */
-router.post("/login", login);
+router.post("/login", asyncErrorHandler(login));
 
 /* Get /Logout. */
 router.get("/logout", logout);
